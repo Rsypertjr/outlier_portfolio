@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from 'react-icons/fa';
 
+
 function App() {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <header className="bg-gray-800">
@@ -9,16 +16,16 @@ function App() {
           <h1 className="text-4xl font-bold text-white">My Portfolio</h1>
           <nav>
             <ul className="flex space-x-4">
-              <li><a href="#" className="text-white hover:text-gray-300">Home</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300">About</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300">Projects</a></li>
-              <li><a href="#" className="text-white hover:text-gray-300">Contact</a></li>
+              <li><a href="#" onClick={() => scrollToSection('home')}className="text-white hover:text-gray-300">Home</a></li>
+              <li><a href="#" onClick={() => scrollToSection('about')} className="text-white hover:text-gray-300">About</a></li>
+              <li><a href="#" onClick={() => scrollToSection('projects')}  className="text-white hover:text-gray-300">Projects</a></li>
+              <li><a href="#" onClick={() => scrollToSection('contact')} className="text-white hover:text-gray-300">Contact</a></li>
             </ul>
           </nav>
         </div>
       </header>
       <main className="container mx-auto py-8 px-8">
-        <section className="mb-8">
+        <section id="home" className="mb-8">
           <h2 className="text-2xl font-bold mb-4">About Me</h2>
           <div className="flex items-center mb-4">
             <FaLinkedin size={24} className="mr-2" />
@@ -28,7 +35,7 @@ function App() {
           </div>
           <p>Welcome to my portfolio website! I am Vincent C K Wong, a web developer passionate about creating clean and modern websites.</p>
         </section>
-        <section className="mb-8">
+        <section id="about" className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Experience</h2>
           <ul className="space-y-4">
             <li>
@@ -43,7 +50,7 @@ function App() {
             </li>
           </ul>
         </section>
-        <section className="mb-8">
+        <section id="projects" className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6">
@@ -60,7 +67,7 @@ function App() {
             </div>
           </div>
         </section>
-        <section>
+        <section id="contact" className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Contact</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
